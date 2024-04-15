@@ -1,0 +1,53 @@
+plugins {
+    id 'java'
+    id 'io.qameta.allure' version '2.11.2'
+}
+
+group 'org.example'
+version '1.0-SNAPSHOT'
+
+allure {
+    report {
+        version.set('2.27.0')
+    }
+    adapter { // отвечает за появление папочки build/allure-results
+        aspectjWeaver.set(true) //обработка аннотации @Step
+        frameworks {
+            junit5 { //название фреймворка
+                adapterVersion.set("2.27.0") //версия интеграции фреймворка и Allure
+            }
+        }
+    }
+}
+
+repositories {
+    mavenCentral()
+}
+
+compileJava { options.encoding = 'UTF-8' }
+compileTestJava { options.encoding = 'UTF-8' }
+
+dependencies {
+    testImplementation(
+            'org.junit.jupiter:junit-jupiter:5.9.2',
+            'com.codeborne:selenide:6.19.1',
+            'com.github.javafaker:javafaker:1.0.2',
+            'org.slf4j:slf4j-simple:2.0.7',
+            'io.qameta.allure:allure-selenide:2.27.0'
+
+    )
+
+    testRuntimeOnly('org.junit.jupiter:junit-jupiter-engine:5.9.0')
+}
+
+test {
+    useJUnitPlatform()
+    systemProperties(System.getProperties())
+}
+
+compileJava.options.encoding = 'UTF-8'
+
+tasks.withType(JavaCompile)
+        {
+            options.encoding = 'UTF-8'
+        }
