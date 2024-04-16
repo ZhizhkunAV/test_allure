@@ -52,4 +52,16 @@ public class StepsIssueTest {
                 $(withText("#" + ISSUE)).should(Condition.exist);
         });
     }
+
+    @Test
+    void stepAnotatedText() {
+        WebSteps webSteps = new WebSteps();
+        SelenideLogger.addListener("allure", new AllureSelenide());
+
+        webSteps.openMainPage();
+        webSteps.serchForRepository(REPOSITORY);
+        webSteps.clickOnRepositoryLink(REPOSITORY);
+        webSteps.openIssueTab();
+        webSteps.shouldSeeIssueWithNumber(ISSUE);
+    }
 }
