@@ -22,8 +22,8 @@ public class StepsIssueTest {
         Configuration.pageLoadStrategy = "eager";
     }
 
-    private static final String REPOSITORY = "eroshenkoam/allure-example";
-    private static final int ISSUE = 80;
+    private static final String REPOSITORY = "ZhizhkunAV/test_allure";
+    private static final int ISSUE = 1;
 
     @Test
     void testLambdaTest() {
