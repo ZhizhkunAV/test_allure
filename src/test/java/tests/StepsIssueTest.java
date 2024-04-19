@@ -1,13 +1,13 @@
 package tests;
 
-import com.codeborne.selenide.Condition;
 import com.codeborne.selenide.Configuration;
 import com.codeborne.selenide.logevents.SelenideLogger;
 import io.qameta.allure.selenide.AllureSelenide;
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.Test;
+import org.openqa.selenium.By;
 
-import static com.codeborne.selenide.Selectors.withText;
+import static com.codeborne.selenide.Condition.exist;
 import static com.codeborne.selenide.Selenide.$;
 import static com.codeborne.selenide.Selenide.open;
 import static io.qameta.allure.Allure.step;
@@ -23,7 +23,7 @@ public class StepsIssueTest {
     }
 
     private static final String REPOSITORY = "ZhizhkunAV/test_allure";
-    private static final int ISSUE = 1;
+    private static final String issueText = "TheFirstIssue";
 
     @Test
     void testLambdaTest() {
@@ -48,8 +48,8 @@ public class StepsIssueTest {
             $("#issues-tab").click();
         });
 
-        step("Проверяем наличие Issue", () -> {
-                $(withText("#" + ISSUE)).should(Condition.exist);
+        step("Проверяем наличие текста Issue", () -> {
+            $(By.linkText(issueText)).should(exist);
         });
     }
 
@@ -62,6 +62,6 @@ public class StepsIssueTest {
         webSteps.serchForRepository(REPOSITORY);
         webSteps.clickOnRepositoryLink(REPOSITORY);
         webSteps.openIssueTab();
-        webSteps.shouldSeeIssueWithNumber(ISSUE);
+        webSteps.shouldSeeIssueWithText(issueText);
     }
 }
