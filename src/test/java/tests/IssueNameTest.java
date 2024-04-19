@@ -26,7 +26,7 @@ public class IssueNameTest {
 
         open("/");
         $(".header-search-input").click();
-        $("#query-builder-test").sendKeys("eroshenkoam/allure-example");
+        $("#query-builder-test").sendKeys("ZhizhkunAV/test_allure");
         $("#query-builder-test").pressEnter();
 
 

@@ -22,7 +22,7 @@ public class AttachmentTest {
         Configuration.pageLoadStrategy = "eager";
     }
 
-    private static final String REPOSITORY = "eroshenkoam/allure-example";
+    private static final String REPOSITORY = "ZhizhkunAV/test_allure";
     private static final int ISSUE = 80;
 
     @Test
